@@ -1,8 +1,7 @@
 ---
-title: A University of Warwick Presentation
-subtitle: Subtitle
-author: Your Name
-date: last-modified
+title: Warwick-branded plots, presentations and websites using Quarto and R
+author: Ella Kaye
+date: 2024-06-10
 date-format: long
 format: 
   warwickpres-revealjs: 
@@ -10,93 +9,158 @@ format:
       data-background-image: warwick-logo-white.png
       data-background-size: 15%
       data-background-position: 100% 0%
-### To remove the logo from the title page, 
-### delete lines 7-12 above and uncomment the two lines below
-#format:
-#  warwickpres-revealjs: default
+    footer: <https://warwick-stats-resources.github.io/warwickbrand-talk>
+execute:
+  echo: true
 ---
 
-## Introduction
+## Three related projects
 
-This is a Quarto presentation format that is consistent with The University of Warwick's [brand](https://warwick.ac.uk/about/brand/), especially its [colours](https://warwick.ac.uk/about/brand/brand-guidelines/colours/) and [typography](https://warwick.ac.uk/about/brand/brand-guidelines/typography/).
 
-It also features the University of Warwick logo on the title slide.
+- **warwickplots**
+
+  An R package with colour palettes and a ggplot2 theme
+  
+. . .
+  
+- **warwickpres**
+
+  A Quarto Revealjs extension for presentations
+  
+. . .
+
+- **warwickcourse**
+
+  A GitHub template for creating course/workshop websites with Quarto
+
+
+## What I'd like you to take from this talk
+
+- These projects *exist*
+
+- What these projects *look* like
+
+- A quick guide to getting started using them
+
+- Where to learn more (they are well-documented)
+
+. . .
+
+:::{.callout-tip}
+## Top takeway
+
+[Please use them!]{.larger200}
+:::
+
+## What this talk is not
+
+- A detailed technical demonstration of their use
+
+- How to develop packages / write Quarto extensions
+
+- A guide to using [Quarto](https://quarto.org)
 
 . . .
 
 :::{.callout-note}
-To remove the logo from the title slide, delete the replace lines 7-12 of this `.qmd` file and uncomment lines 15-16.
+## What is Quarto?
+- An open-source scientific and technical publishing system 
+- Create dynamic content with Python, R, Julia, and Observable
+- Publish reproducible, production quality articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.
+- Write using Pandoc markdown, including equations, citations, crossrefs, figure panels, callouts, advanced layout, and more
 :::
 
-:::{.notes}
-Speaker notes go here.
-:::
+# But first... {.inverse}
 
-# inverse class for section headings {.inverse}
-
-## {.inverse .center-h .center .larger125}
-
-inverse class is also useful for stressing *key points*. 
+# The University of Warwick brand {.inverse}
 
 ## Colours
 
-There's a colour for inline code such as `x <- c(1, 3, 6)` and `{.inverse}`.
+[Warwick brand colours](https://warwick.ac.uk/about/brand/brand-guidelines/colours/)
 
-There's also a colour for short [links](https://github.com/Warwick-Stats-Resources/warwickpres) and full ones like <https://quarto.org/docs/presentations/revealjs/>.
+:::: {.columns}
 
-## Colours {.inverse}
+::: {.column width="50%"}
+![](images/warwick-brand-colours.png)
+:::
 
-There's a colour for inline code such as `x <- c(1, 3, 6)` and `{.inverse}`.
+::: {.column width="50%"}
+![](images/warwick-brand-colour-combos.png)
+:::
+::::
 
-There's also a colour for short [links](https://github.com/Warwick-Stats-Resources/warwickpres) and full ones like <https://quarto.org/docs/presentations/revealjs/>.
+## Typography
 
-- The inline code and link colours change when the inverse class is applied.
+[Warwick brand typography](https://warwick.ac.uk/about/brand/brand-guidelines/typography/)
 
-## Code
+- [Lato](https://fonts.google.com/specimen/Lato) for digital
+- Avenir Next for print
 
-The extension includes a custom syntax highlighting theme:
+## Logo
 
-```{r}
-#| echo: true
-#| eval: false
-library(dplyr)
-library(palmerpenguins)
+[Warwick logo](https://warwick.ac.uk/about/brand/brand-guidelines/logos/)
 
-penguins %>%
-  mutate(
-    long_flipper = case_when(
-      species == "Adelie" & flipper_length_mm > 195 ~ TRUE,
-      species == "Chinstrap" & flipper_length_mm > 200 ~ TRUE,
-      species == "Gentoo" & flipper_length_mm > 225 ~ TRUE,
-      TRUE ~ FALSE
-    )
-  ) %>%
-  mutate(
-    body_mass_kg = body_mass_g / 1000,
-    bill_length_cm = bill_length_mm / 10,
-    bill_depth_cm = bill_depth_mm / 10
-  )
-```
+![](images/warwick-logo-aubergine.png){fig-align="center"}
+
+Also available in white and black.
+
+# warwickplots {.inverse}
 
 ## warwickplots
 
-For plotting, the warwickpres extension goes hand-in-hand with the **warwickplots** R package, which provides colour palettes and a ggplot2 theme, `theme_warwick()`, that are also consistent with the University of Warwick's branding.
+An R package with colour palettes and a
+[ggplot2](https://ggplot2.tidyverse.org) theme that are consistent with
+The University of Warwick’s
+[branding](https://warwick.ac.uk/about/brand/brand-guidelines/),
+especially its
+[colours](https://warwick.ac.uk/about/brand/brand-guidelines/colours/)
+and
+[typography](https://warwick.ac.uk/about/brand/brand-guidelines/typography/).
 
-<https://warwick-stats-resources.github.io/warwickplots/>
+. . .
+
+The palettes are built using the
+[palettes](https://mccarthy-m-g.github.io/palettes/index.html) package.
+The ggplot2 theme is heavily inspired by the work of [Cara
+Thompson](https://www.cararthompson.com/), particularly her talk on
+[applying a unifying aesthetic to your
+plots](https://www.cararthompson.com/talks/nhsr2022-ggplot-themes/).
+
+. . .
+
+![](images/warwickplots.svg){width="25%" fig-align="center"}
+
+## The palettes
 
 ```{r}
-#| echo: false
 library(warwickplots)
 plot(warwick_palettes)
 ```
 
+## warwickplots and ggplot2
+
+- Colour and fill scales provided by the palettes package
+
+- `theme_warwick()`
+
+## `theme_warwick()`
+
+An extension of `ggplot2::theme_minimal()`, offering the following in addition:
+
+:::{.incremental}
+- Text hierarchy, with different sizes and colours
+- Spacing, giving the text room to breathe
+- Uses `ggtext::element_textbox_simple()` for the plot title and subtitle, to enable use of markdown and CSS styling, and text-wrapping if the title/subtitle is long
+- Places the legend above the plot
+- Uses Lato or Avenir Next font (for online or print use respectively), *if your system is set up for it*
+:::
 
 ## warwickplots example
 
 ```{r}
 #| echo: true
 #| output-location: slide
-#| code-line-numbers: "|9,15"
+#| code-line-numbers: "|9,15|11,16"
 library(ggplot2)
 library(warwickplots)
 library(palmerpenguins)
@@ -115,68 +179,16 @@ ggplot(penguins, aes(flipper_length_mm, body_mass_g, group = species)) +
   theme(legend.position = 'none')
 ```
 
-## Callouts {.smaller60}
+## More about warwickplots
 
-There are custom colours for callouts: 
+Package website: [warwick-stats-resources.github.io/warwickplots](https://warwick-stats-resources.github.io/warwickplots/)
 
-:::{.callout-note}
-A note
-:::
+  - [Get started](https://warwick-stats-resources.github.io/warwickplots/articles/warwickplots.html)
+  - [Using warwickplots with ggplot2](https://warwick-stats-resources.github.io/warwickplots/articles/ggplot2.html)
 
-:::{.callout-warning}
-A warning
-:::
+Package repo: [github.com/warwick-stats-resources/warwickplots](https://github.com/warwick-stats-sesources/warwickplots)
 
-:::{.callout-important}
-Something important
-:::
-
-:::{.callout-tip}
-This is a good idea
-:::
-
-:::{.callout-caution}
-Be careful about doing this
-:::
-
-These require a raw html chunk at the end of the presentation `.qmd` file (included in template). Callouts do **not** look good on the inverse background.
-
-
-# Non-Warwick-specific nice-to-haves {.inverse}
-
-## Alignment
-
-There are classes to help with text alignment:
-
-:::{.center-h}
-`{.center-h}` gives horizontally-centered text
-:::
-
-:::{.right}
-`{.right}` gives right-aligned text
-:::
-
-:::{.callout-note}
-For all revealjs Quarto presentations, applying `{.center}` to the slide title vertically centers the whole slide.
-:::
-
-## Sizing
-
-There are classes to help size text by a given percentage:
-
-[`{.smaller90}`]{.smaller90}, [`{.smaller80}`]{.smaller80}, [`{.smaller75}`]{.smaller75}
-[`{.smaller70}`]{.smaller70}, [`{.smaller60}`]{.smaller60}, [`{.smaller50}`]{.smaller50}
-
-[`{.larger125}`]{.larger125}, [`{.larger150}`]{.larger150}, [`{.larger175}`]{.larger175}, 
-[`{.larger200}`]{.larger200}, [`{.larger250}`]{.larger250}
-
-## More information
-
-You can learn more about Quarto Revealjs presentations at <https://quarto.org/docs/presentations/revealjs/>
-
-You can learn more about Quarto extensions at <https://quarto.org/docs/extensions/>
-
-You can find these slides at <https://warwick-stats-resources.github.io/warwickpres/>
+# warwickpres {.inverse}
 
 ```{=html}
 <!-- needs to be last chunk of presentation otherwise creates an extra slide -->
