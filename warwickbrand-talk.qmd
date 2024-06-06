@@ -9,12 +9,17 @@ format:
       data-background-image: warwick-logo-white.png
       data-background-size: 15%
       data-background-position: 100% 0%
-    footer: <https://warwick-stats-resources.github.io/warwickbrand-talk>
 execute:
   echo: true
 ---
 
-## Three related projects
+## These slides
+
+<https://warwick-stats-resources.github.io/warwickbrand-talk>
+
+![](images/slides_qr_code.svg){fig-align="center"}
+
+## Three related resources
 
 
 - **warwickplots**
@@ -36,9 +41,9 @@ execute:
 
 ## What I'd like you to take from this talk
 
-- These projects *exist*
+- These resources *exist*
 
-- What these projects *look* like
+- What they *look* like
 
 - A quick guide to getting started using them
 
@@ -189,6 +194,65 @@ Package website: [warwick-stats-resources.github.io/warwickplots](https://warwic
 Package repo: [github.com/warwick-stats-resources/warwickplots](https://github.com/warwick-stats-sesources/warwickplots)
 
 # warwickpres {.inverse}
+
+## A Quarto Revealjs extension which offers
+
+- The University of Warwick logo on the title slide
+- A theme consistent with the University of Warwick's brand [colours](https://warwick.ac.uk/about/brand/brand-guidelines/colours/), including an inverse class
+- A font (Lato) consistent with the University of Warwick's [typography](https://warwick.ac.uk/about/brand/brand-guidelines/typography/) guidelines
+- Colours consistent with the brand for quarto callouts
+- A custom syntax highlighting theme consistent with the brand colours
+- Additional convenience classes for sizing and aligning
+
+## Examples
+
+This is a warwickpres!
+
+. . .
+
+The warwickpres starting point:
+
+<https://warwick-stats-resources.github.io/warwickpres>
+
+Let's take a look...
+
+## Getting started
+
+```{.bash}
+quarto use template Warwick-Stats-Resources/warwickpres
+```
+
+. . .
+
+:::{.callout-note}
+The workflow for using warwickpres in an RStudio project with git/GitHub/gh-pages is a bit fiddly, but well documented in the [README](https://github.com/Warwick-Stats-Resources/warwickpres/blob/main/README.md).
+:::
+
+. . .
+
+Demo
+
+# warwickcourse {.inverse}
+
+## What it offers
+
+
+
+## Examples
+
+The template: []()
+
+R package development workshop 2024:
+
+. . .
+
+:::{.callout-tip}
+## Sign-up for the R package development workshop!
+
+[warwick.ac.uk/ellakaye/r-packages-2024](https://warwick.ac.uk/ellakaye/r-packages-2024)
+
+Deadline June 18th (Warwick members only)
+:::
 
 ```{=html}
 <!-- needs to be last chunk of presentation otherwise creates an extra slide -->
