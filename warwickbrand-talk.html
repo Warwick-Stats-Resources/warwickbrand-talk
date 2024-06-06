@@ -413,18 +413,18 @@ Ella Kaye
 <section id="three-related-resources" class="slide level2">
 <h2>Three related resources</h2>
 <ul>
-<li><p><strong>warwickplots</strong></p>
+<li><p><a href="https://github.com/Warwick-Stats-Resources/warwickplots"><strong>warwickplots</strong></a></p>
 <p>An R package with colour palettes and a ggplot2 theme</p></li>
 </ul>
 <div class="fragment">
 <ul>
-<li><p><strong>warwickpres</strong></p>
+<li><p><a href="https://github.com/Warwick-Stats-Resources/warwickpres"><strong>warwickpres</strong></a></p>
 <p>A Quarto Revealjs extension for presentations</p></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><p><strong>warwickcourse</strong></p>
+<li><p><a href="https://github.com/Warwick-Stats-Resources/warwickcourse"><strong>warwickcourse</strong></a></p>
 <p>A GitHub template for creating course/workshop websites with Quarto</p></li>
 </ul>
 </div>
@@ -540,8 +540,17 @@ Ella Kaye
 <section id="warwickplots-and-ggplot2" class="slide level2">
 <h2>warwickplots and ggplot2</h2>
 <ul>
-<li><p>Colour and fill scales provided by the palettes package</p></li>
-<li><p><code>theme_warwick()</code></p></li>
+<li>Colour and fill scales provided by the palettes package</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><code>scale_colour_palette_d()</code> <code>scale_colour_palette_c()</code> <code>scale_colour_palette_b()</code></p>
+</div><div class="column" style="width:50%;">
+<p><code>scale_fill_palette_d()</code> <code>scale_fill_palette_c()</code> <code>scale_fill_palette_b()</code></p>
+</div>
+</div>
+<ul>
+<li><code>theme_warwick()</code></li>
 </ul>
 </section>
 <section id="theme_warwick" class="slide level2">
@@ -551,7 +560,7 @@ Ella Kaye
 <ul>
 <li class="fragment">Text hierarchy, with different sizes and colours</li>
 <li class="fragment">Spacing, giving the text room to breathe</li>
-<li class="fragment">Uses <code>ggtext::element_textbox_simple()</code> for the plot title and subtitle, to enable use of markdown and CSS styling, and text-wrapping if the title/subtitle is long</li>
+<li class="fragment">Uses <code>element_textbox_simple()</code> from <a href="https://wilkelab.org/ggtext/">ggtext</a> for the plot title and subtitle, to enable use of markdown and CSS styling, and text-wrapping if the title/subtitle is long</li>
 <li class="fragment">Places the legend above the plot</li>
 <li class="fragment">Uses Lato or Avenir Next font (for online or print use respectively), <em>if your system is set up for it</em></li>
 </ul>
@@ -560,22 +569,23 @@ Ella Kaye
 <section id="warwickplots-example" class="slide level2">
 <h2>warwickplots example</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|9,15|11,16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-2"><a href=""></a><span class="fu">library</span>(warwickplots)</span>
-<span id="cb2-3"><a href=""></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb2-4"><a href=""></a></span>
-<span id="cb2-5"><a href=""></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">group =</span> species)) <span class="sc">+</span></span>
-<span id="cb2-6"><a href=""></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> species, <span class="at">shape =</span> species), </span>
-<span id="cb2-7"><a href=""></a>             <span class="at">alpha =</span> <span class="fl">0.8</span>, </span>
-<span id="cb2-8"><a href=""></a>             <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb2-9"><a href=""></a>  <span class="fu">scale_color_palette_d</span>(warwick_palettes<span class="sc">$</span>primary) <span class="sc">+</span></span>
-<span id="cb2-10"><a href=""></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Penguin Size, Palmer Station LTER"</span>,</span>
-<span id="cb2-11"><a href=""></a>       <span class="at">subtitle =</span> <span class="st">"Flipper length and body mass for **&lt;span style = 'color:#3C1053;'&gt;Adelie&lt;/span&gt;**, **&lt;span style = 'color:#6DCDB8;'&gt;Chinstrap&lt;/span&gt;** and **&lt;span style = 'color:#CB333B;'&gt;Gentoo&lt;/span&gt;** Penguins. This is based on data made available in the **palmerpenguins** R package."</span>,</span>
-<span id="cb2-12"><a href=""></a>       <span class="at">caption =</span> <span class="st">"Visualization: Ella Kaye, Data: Gorman, Williams &amp; Fraser (2014) DOI: 10.1371/journal.pone.009008"</span>,</span>
-<span id="cb2-13"><a href=""></a>       <span class="at">x =</span> <span class="st">"flipper length (mm)"</span>,</span>
-<span id="cb2-14"><a href=""></a>       <span class="at">y =</span> <span class="st">"body mass (g)"</span>) <span class="sc">+</span></span>
-<span id="cb2-15"><a href=""></a>  <span class="fu">theme_warwick</span>() <span class="sc">+</span></span>
-<span id="cb2-16"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|5,16|7-12,17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">group =</span> species)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href=""></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> species, <span class="at">shape =</span> species), </span>
+<span id="cb2-3"><a href=""></a>             <span class="at">alpha =</span> <span class="fl">0.8</span>, </span>
+<span id="cb2-4"><a href=""></a>             <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb2-5"><a href=""></a>  <span class="fu">scale_color_palette_d</span>(warwick_palettes<span class="sc">$</span>primary) <span class="sc">+</span></span>
+<span id="cb2-6"><a href=""></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Penguin Size, Palmer Station LTER"</span>,</span>
+<span id="cb2-7"><a href=""></a>       <span class="at">subtitle =</span> <span class="st">"Flipper length and body mass for </span></span>
+<span id="cb2-8"><a href=""></a><span class="st">                  **&lt;span style = 'color:#3C1053;'&gt;Adelie&lt;/span&gt;**, </span></span>
+<span id="cb2-9"><a href=""></a><span class="st">                  **&lt;span style = 'color:#6DCDB8;'&gt;Chinstrap&lt;/span&gt;** and </span></span>
+<span id="cb2-10"><a href=""></a><span class="st">                  **&lt;span style = 'color:#CB333B;'&gt;Gentoo&lt;/span&gt;** Penguins. </span></span>
+<span id="cb2-11"><a href=""></a><span class="st">                  This is based on data made available in the </span></span>
+<span id="cb2-12"><a href=""></a><span class="st">                  **palmerpenguins** R package."</span>,</span>
+<span id="cb2-13"><a href=""></a>       <span class="at">caption =</span> <span class="st">"Visualization: Ella Kaye, Data: Gorman, Williams &amp; Fraser (2014) DOI: 10.1371/journal.pone.009008"</span>,</span>
+<span id="cb2-14"><a href=""></a>       <span class="at">x =</span> <span class="st">"flipper length (mm)"</span>,</span>
+<span id="cb2-15"><a href=""></a>       <span class="at">y =</span> <span class="st">"body mass (g)"</span>) <span class="sc">+</span></span>
+<span id="cb2-16"><a href=""></a>  <span class="fu">theme_warwick</span>() <span class="sc">+</span></span>
+<span id="cb2-17"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>
@@ -583,7 +593,7 @@ Ella Kaye
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="warwickbrand-talk_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="warwickbrand-talk_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -595,14 +605,15 @@ Ella Kaye
 <li><a href="https://warwick-stats-resources.github.io/warwickplots/articles/ggplot2.html">Using warwickplots with ggplot2</a></li>
 </ul>
 <p>Package repo: <a href="https://github.com/warwick-stats-sesources/warwickplots">github.com/warwick-stats-resources/warwickplots</a></p>
+<p>See also: all the documentation for the <a href="https://mccarthy-m-g.github.io/palettes">palettes</a> package</p>
 </section></section>
 <section>
 <section id="warwickpres" class="title-slide slide level1 inverse center">
 <h1>warwickpres</h1>
 
 </section>
-<section id="a-quarto-revealjs-extension-which-offers" class="slide level2">
-<h2>A Quarto Revealjs extension which offers</h2>
+<section id="a-quarto-revealjs-extension" class="slide level2">
+<h2>A Quarto Revealjs extension</h2>
 <ul>
 <li>The University of Warwick logo on the title slide</li>
 <li>A theme consistent with the University of Warwick’s brand <a href="https://warwick.ac.uk/about/brand/brand-guidelines/colours/">colours</a>, including an inverse class</li>
@@ -637,7 +648,15 @@ Ella Kaye
 </div>
 </div>
 <div class="fragment">
-<p>Demo</p>
+<p><strong>Demo</strong></p>
+<ul>
+<li>Setting up with an RStudio project, git, GitHub and GitHub Page</li>
+<li>Exploring the template
+<ul>
+<li>YAML</li>
+<li>HTML for callouts</li>
+</ul></li>
+</ul>
 </div>
 </section></section>
 <section>
@@ -645,13 +664,25 @@ Ella Kaye
 <h1>warwickcourse</h1>
 
 </section>
-<section id="what-it-offers" class="slide level2">
-<h2>What it offers</h2>
+<section id="a-website-template" class="slide level2">
+<h2>A website template</h2>
+<ul>
+<li>Consistent with The University of Warwick brand</li>
+<li>Home page (<code>index.qmd</code>) ready to fill in key course details</li>
+<li>Pages for the schedule, joining instructions and prerequisites</li>
+<li>Assumes multiple sessions, each with its own content page and slide deck
+<ul>
+<li>Templates for content and slides</li>
+<li><code>create_session()</code></li>
+</ul></li>
+</ul>
 </section>
 <section id="examples-1" class="slide level2">
 <h2>Examples</h2>
-<p>The template: <a href=""></a></p>
+<p>The template:</p>
+<p><a href="https://warwick-stats-resources.github.io/warwickcourse">warwick-stats-resources.github.io/warwickcourse</a></p>
 <p>R package development workshop 2024:</p>
+<p><a href="https://warwick-stats-resources.github.io/r-packages-2024">warwick-stats-resources.github.io/r-packages-2024</a></p>
 <div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -664,6 +695,39 @@ Ella Kaye
 </div>
 </div>
 </div>
+</div>
+</section>
+<section id="create_session" class="slide level2">
+<h2><code>create_session()</code></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">source</span>(<span class="st">"R/sessions.R"</span>)</span>
+<span id="cb4-2"><a href=""></a><span class="fu">create_session</span>(<span class="st">"session-name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>create <code>slides/session-name</code>, copying <code>slides/00-template</code></li>
+<li>create <code>content/session-name</code>, copying <code>content/00-template</code></li>
+<li>replace all instances of <code>UPDATE-DIR-NAME</code> in <code>content/session-name/index.qmd</code> with <code>session-name</code>
+<ul>
+<li>links to slides in a new window</li>
+<li>embeds slides in the content page</li>
+</ul></li>
+<li><code>delete_session()</code></li>
+</ul>
+</section>
+<section id="demo" class="slide level2">
+<h2>Demo</h2>
+<ul>
+<li>Getting the template from GitHub</li>
+<li>editing content and slides template
+<ul>
+<li>note YAML additions to warwickpres</li>
+</ul></li>
+<li><code>create_session()</code></li>
+<li>listings</li>
+</ul>
+</section></section>
+<section id="thank-you" class="title-slide slide level1 inverse center-h center">
+<h1>Thank you!</h1>
+<p><br> ella.m.kaye@warwick.ac.uk</p>
+<p><a href="https://github.com/Warwick-Stats-Resources">github.com/Warwick-Stats-Resources</a></p>
 <!-- needs to be last chunk of presentation otherwise creates an extra slide -->
 <!-- requires Quarto v1.3 -->
 <!-- tint80 for border, tint20 for title -->
@@ -715,8 +779,7 @@ div.callout-caution.callout-style-default .callout-title {
 
 </div>
 </div>
-</div>
-</section></section>
+</section>
     </div>
   </div>
 
