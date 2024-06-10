@@ -17,6 +17,8 @@ execute:
 
 <https://warwick-stats-resources.github.io/warwickbrand-talk>
 
+*All text in blue is a link*
+
 ![](images/slides_qr_code.svg){fig-align="center"}
 
 ## Three related resources
